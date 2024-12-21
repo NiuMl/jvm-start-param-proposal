@@ -67,7 +67,8 @@ public class JvmController {
                             put("thread", stringNumberMap);
                             put("memory", new MemoryInformation());
                             put("heap", getHeapInfo());
-                            put("gc", gcInfo());
+                            put("gc", gcInfo("jstat -gc "+pid+" 1 1"));
+                            put("gcutil", gcInfo("jstat -gcutil "+pid+" 1 1"));
                         }};
                         return objectMapper.writeValueAsString(map);
                     } catch (IOException e) {
@@ -107,7 +108,7 @@ public class JvmController {
                     put("thread", stringNumberMap);
                     put("memory", new MemoryInformation());
                     put("heap", getHeapInfo());
-                    put("gc", gcInfo());
+                    put("gc", gcInfo("jstat -gc "+pid+" 1 1"));
                 }};
                 sseEmitter.send(SseEmitter.event()
                         .name("message")
@@ -137,8 +138,7 @@ public class JvmController {
 
 
     //gc相关
-    private Map<String, Number> gcInfo() throws IOException {
-        String cmd = "jstat -gc "+pid+" 1 1";
+    private Map<String, Number> gcInfo(String cmd) throws IOException {
         Process process = Runtime.getRuntime().exec(new String[]{
                 "/bin/sh", "-c", cmd});
         InputStreamReader ir = new InputStreamReader(process.getInputStream());
@@ -152,10 +152,11 @@ public class JvmController {
         String[] split = strList.get(1).replace("-","0").split(" ");
         List<String> list = Arrays.stream(split).filter(a -> !a.isEmpty()).collect(Collectors.toList());
         AtomicInteger i = new AtomicInteger();
-
         return Arrays.stream(strList.get(0).split(" ")).filter(a->!a.isEmpty()).collect(Collectors.toMap(a->a,a->Double.parseDouble(list.get(i.getAndIncrement())),(a, b)->a));
-
     }
+
+
+
 
 
     private static Map<String, Number> collectThreadInfo() {
