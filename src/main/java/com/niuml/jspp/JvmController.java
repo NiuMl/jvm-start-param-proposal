@@ -45,10 +45,9 @@ public class JvmController {
 
     @GetMapping("/startThread")
     public String startThread(){
-        final String[] s = {"asdfasdfasdfasdfasdfasdfasdfasdf"};
         IntStream.range(1,100).forEach(a->{
             executors.execute(()->{
-                s[0] += s[0];
+                log.info("start thread {}",a);
             });
         });
         return "startThread";
