@@ -62,9 +62,8 @@ public class JvmController {
         return Flux.interval(Duration.ofSeconds(1))
                 .map(sequence -> {
                     try {
-                        Map<String, Number> stringNumberMap = collectThreadInfo();
                         Map<String, Object> map = new HashMap<String, Object>() {{
-                            put("thread", stringNumberMap);
+                            put("thread", collectThreadInfo());
                             put("memory", new MemoryInformation());
                             put("heap", getHeapInfo());
                             put("gc", gcInfo("jstat -gc "+pid+" 1 1"));
@@ -266,7 +265,7 @@ class MemoryInformation {
     private long metaspaceInit;
     private long metaspaceUsed;
     private long metaspaceMax;
-    //Compressed Class Space 类压缩数据区
+    //Compressed Class Space ·
     private long compressedClassSpaceInit;
     private long compressedClassSpaceUsed;
     private long compressedClassSpaceMax;
