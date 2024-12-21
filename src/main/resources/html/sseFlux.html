@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+</head>
+<style>
+    .container {
+        display: flex;
+    }
+
+    .box {
+        width: 270px;
+        height: 200px;
+        margin-right: 10px;
+        background-color: #f1eded;
+    }
+</style>
+<body>
+<div class="container">
+    <div class="box" id="threadCount" ></div>
+    <div class="box" id="threadDaemonCount" ></div>
+    <div class="box" id="jvmThreadTotalStartedCount" ></div>
+    <div class="box" id="jvmThreadNewCount" ></div>
+    <div class="box" id="jvmThreadRunnableCount" ></div>
+</div><br/>
+<div class="container">
+    <div class="box" id="jvmThreadBlockedCount" ></div>
+    <div class="box" id="jvmThreadWaitingCount" ></div>
+    <div class="box" id="jvmThreadTimeWaitingCount" ></div>
+    <div class="box" id="jvmThreadTerminatedCount" ></div>
+    <div class="box" id="jvmThreadDeadlockCount" ></div>
+</div><br/>
+<div class="container">
+    <div class="box" id="nonHeap" ></div>
+    <div class="box" id="heap" ></div>
+</div><br/>
+<div class="container">
+    <div class="box" id="CodeCache" ></div>
+    <div class="box" id="Metaspace" ></div>
+    <div class="box" id="CompressedClassSpace" ></div>
+    <div class="box" id="PSEdenSpace" ></div>
+    <div class="box" id="PSSurvivorSpace" ></div>
+    <div class="box" id="PSOldGen" ></div>
+</div>
+<br/>
+<div class="container">
+    <div class="box" id="gcS0" ></div>
+    <div class="box" id="gcS1" ></div>
+    <div class="box" id="gcEden" ></div>
+    <div class="box" id="gcOld" ></div>
+    <div class="box" id="gcMethod" ></div>
+    <div class="box" id="gcCcsc" ></div>
+</div><br/>
+<div class="container">
+    <div class="box" id="gcYGC" ></div>
+    <div class="box" id="gcYGCT" ></div>
+    <div class="box" id="gcFGC" ></div>
+    <div class="box" id="gcFGCT" ></div>
+    <div class="box" id="gcGCT" ></div>
+</div>
+<!-- ECharts单文件引入 -->
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+<script src="../js/threads.js"></script>
+<script src="../js/heaps.js"></script>
+<script src="../js/memory.js"></script>
+<script src="../js/gc.js"></script>
+<script type="text/javascript">
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var userId = "1";
+
+        // 创建一个新的EventSource对象
+        var source = new EventSource('http://localhost:8080/public/flux');
+
+        // 当连接打开时触发
+        source.onopen = function (event) {
+            console.log('SSE连接已打开');
+        };
+        // 当从服务器接收到消息时触发
+        source.onmessage = function (event) {
+            // event.data 包含服务器发送的文本数据
+            console.log('接收到消息:', event.data);
+            // 在页面上显示消息
+            const obj = JSON.parse(event.data);
+            // console.log(obj);
+            //线程相关
+            setValues(obj.thread);
+            //堆相关
+            heapSetValue(obj.heap);
+            //栈相关
+            memorySetValue(obj.memory)
+            //GC相关
+            gcSetValue(obj.gc)
+        };
+
+        // 当发生错误时触发
+        source.onerror = function (event) {
+            console.error('SSE连接错误:', event);
+        };
+    });
+
+
+</script>
+</body>
