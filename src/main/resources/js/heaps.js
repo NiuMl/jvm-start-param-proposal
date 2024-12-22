@@ -8,9 +8,13 @@ nonHeap.setOption({
             //宽度
             width: 100,
             //6.设置主标题文本样式
-            fontSize: 10,
+          height: 40,
+          lineHeight: 40,
+          //6.设置主标题文本样式
+          fontSize: 14,
         },
     },
+
     series: [
         {
             type: 'gauge',
@@ -19,6 +23,7 @@ nonHeap.setOption({
             min: 0,
             max: 240,
             splitNumber: 2,
+        center: ['50%', '70%'],
             itemStyle: {
                 color: '#58D9F9',
                 shadowColor: 'rgba(0,138,255,0.45)',
@@ -107,9 +112,13 @@ heap.setOption({
             //宽度
             width: 100,
             //6.设置主标题文本样式
-            fontSize: 12,
+          height: 40,
+          lineHeight: 40,
+          //6.设置主标题文本样式
+          fontSize: 14,
         },
     },
+ 
     series: [
         {
             type: 'gauge',
@@ -118,6 +127,7 @@ heap.setOption({
             min: 0,
             max: 240,
             splitNumber: 2,
+        center: ['50%', '70%'],
             itemStyle: {
                 color: '#58D9F9',
                 shadowColor: 'rgba(0,138,255,0.45)',

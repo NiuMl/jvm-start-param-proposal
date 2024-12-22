@@ -17,7 +17,10 @@ gcS0.setOption({
             //宽度
             width: 100,
             //6.设置主标题文本样式
-            fontSize: 12,
+          height: 40,
+          lineHeight: 40,
+          //6.设置主标题文本样式
+          fontSize: 13,
         },
     },
     series: [
@@ -28,6 +31,7 @@ gcS0.setOption({
             min: 0,
             max: 240,
             splitNumber: 2,
+        center: ['50%', '70%'],
             itemStyle: {
                 color: '#58D9F9',
                 shadowColor: 'rgba(0,138,255,0.45)',
@@ -116,7 +120,10 @@ gcS1.setOption({
             //宽度
             width: 100,
             //6.设置主标题文本样式
-            fontSize: 12,
+          height: 40,
+          lineHeight: 40,
+          //6.设置主标题文本样式
+          fontSize: 13,
         },
     },
     series: [
@@ -127,6 +134,7 @@ gcS1.setOption({
             min: 0,
             max: 240,
             splitNumber: 2,
+        center: ['50%', '70%'],
             itemStyle: {
                 color: '#58D9F9',
                 shadowColor: 'rgba(0,138,255,0.45)',
@@ -215,7 +223,10 @@ gcEden.setOption({
             //宽度
             width: 100,
             //6.设置主标题文本样式
-            fontSize: 12,
+          height: 40,
+          lineHeight: 40,
+          //6.设置主标题文本样式
+          fontSize: 13,
         },
     },
     series: [
@@ -226,6 +237,7 @@ gcEden.setOption({
             min: 0,
             max: 240,
             splitNumber: 2,
+        center: ['50%', '70%'],
             itemStyle: {
                 color: '#58D9F9',
                 shadowColor: 'rgba(0,138,255,0.45)',
@@ -314,7 +326,10 @@ gcOld.setOption({
             //宽度
             width: 100,
             //6.设置主标题文本样式
-            fontSize: 12,
+          height: 40,
+          lineHeight: 40,
+          //6.设置主标题文本样式
+          fontSize: 13,
         },
     },
     series: [
@@ -325,6 +340,7 @@ gcOld.setOption({
             min: 0,
             max: 240,
             splitNumber: 2,
+        center: ['50%', '70%'],
             itemStyle: {
                 color: '#58D9F9',
                 shadowColor: 'rgba(0,138,255,0.45)',
@@ -413,9 +429,13 @@ gcMethod.setOption({
             //宽度
             width: 100,
             //6.设置主标题文本样式
-            fontSize: 12,
+          height: 40,
+          lineHeight: 40,
+          //6.设置主标题文本样式
+          fontSize: 13,
         },
     },
+  
     series: [
         {
             type: 'gauge',
@@ -424,6 +444,7 @@ gcMethod.setOption({
             min: 0,
             max: 240,
             splitNumber: 2,
+        center: ['50%', '70%'],
             itemStyle: {
                 color: '#58D9F9',
                 shadowColor: 'rgba(0,138,255,0.45)',
@@ -512,7 +533,10 @@ gcCcsc.setOption({
             //宽度
             width: 100,
             //6.设置主标题文本样式
-            fontSize: 12,
+          height: 40,
+          lineHeight: 40,
+          //6.设置主标题文本样式
+          fontSize: 13,
         },
     },
     series: [
@@ -523,6 +547,7 @@ gcCcsc.setOption({
             min: 0,
             max: 240,
             splitNumber: 2,
+        center: ['50%', '70%'],
             itemStyle: {
                 color: '#58D9F9',
                 shadowColor: 'rgba(0,138,255,0.45)',
@@ -606,166 +631,63 @@ gcCcsc.setOption({
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
-gcYGC.setOption({
+
+
+function optionD(name, color) {
+  return {
     title: {
-        text: '年轻代gc次数',
-        left: "center",
-        textStyle: {
-            //宽度
-            width: 100,
-            //6.设置主标题文本样式
-            fontSize: 12,
-        },
+      text: name,
+      left: "center",
+      textStyle: {
+        //宽度
+        width: 100,
+        height: 40,
+        lineHeight: 40,
+        //6.设置主标题文本样式
+        fontSize: 14,
+      },
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
     },
     tooltip: {
-        trigger: 'item',
-        axisPointer: {
-            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-        }
+      trigger: 'axis',
+      axisPointer: {
+        // 坐标轴指示器，坐标轴触发有效
+        type: 'line' // 默认为直线，可选为：'line' | 'shadow'
+      }
 
     },
     xAxis: {
-        type: 'category',
-        data: []
+      type: 'category',
+      data: []
     },
     yAxis: {},
     series: [
-        {
-            // name: '线程总数',
-            type: 'line',
-            data: []
+      {
+        // name: '线程总数',
+        type: 'line',
+        data: [],
+        itemStyle: {
+          color: color
         }
+      }
     ]
-});
-gcYGCT.setOption({
-    title: {
-        text: '年轻代gc消耗时间',
-        left: "center",
-        textStyle: {
-            //宽度
-            width: 100,
-            //6.设置主标题文本样式
-            fontSize: 12,
-        },
-    },
-    tooltip: {
-        trigger: 'item',
-        axisPointer: {
-            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-        }
-
-    },
-    xAxis: {
-        type: 'category',
-        data: []
-    },
-    yAxis: {},
-    series: [
-        {
-            // name: '线程总数',
-            type: 'line',
-            data: []
-        }
-    ]
-});
-gcFGC.setOption({
-    title: {
-        text: '老年代gc次数',
-        left: "center",
-        textStyle: {
-            //宽度
-            width: 100,
-            //6.设置主标题文本样式
-            fontSize: 12,
-        },
-    },
-    tooltip: {
-        trigger: 'item',
-        axisPointer: {
-            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-        }
-
-    },
-    xAxis: {
-        type: 'category',
-        data: []
-    },
-    yAxis: {},
-    series: [
-        {
-            // name: '线程总数',
-            type: 'line',
-            data: []
-        }
-    ]
-});
-gcFGCT.setOption({
-    title: {
-        text: '老年代gc消耗时间',
-        left: "center",
-        textStyle: {
-            //宽度
-            width: 100,
-            //6.设置主标题文本样式
-            fontSize: 12,
-        },
-    },
-    tooltip: {
-        trigger: 'item',
-        axisPointer: {
-            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-        }
-
-    },
-    xAxis: {
-        type: 'category',
-        data: []
-    },
-    yAxis: {},
-    series: [
-        {
-            // name: '线程总数',
-            type: 'line',
-            data: []
-        }
-    ]
-});
-gcGCT.setOption({
-    title: {
-        text: 'gc总时间',
-        left: "center",
-        textStyle: {
-            //宽度
-            width: 100,
-            //6.设置主标题文本样式
-            fontSize: 12,
-        },
-    },
-    tooltip: {
-        trigger: 'item',
-        axisPointer: {
-            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-        }
-
-    },
-    xAxis: {
-        type: 'category',
-        data: []
-    },
-    yAxis: {},
-    series: [
-        {
-            // name: '线程总数',
-            type: 'line',
-            data: []
-        }
-    ]
-});
+  }
+}
+//年轻代gc次数
+gcYGC.setOption(optionD('年轻代gc次数', '#409EFF'));
+//年轻代gc消耗时间 
+gcYGCT.setOption(optionD('年轻代gc消耗时间', '#1B45CE'));
+// 老年代gc次数
+gcFGC.setOption(optionD('老年代gc次数', '#59C75B'));
+//老年代gc消耗时间 
+gcFGCT.setOption(optionD('老年代gc消耗时间', '#E9E322'));
+//gc总时间
+gcGCT.setOption(optionD('gc总时间', '#C0E995'));
 
 let ygcArrY = new Array(nums);
 let ygcArrX = new Array(nums);

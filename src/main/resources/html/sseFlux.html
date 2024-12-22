@@ -4,15 +4,24 @@
     <title>ECharts</title>
 </head>
 <style>
+    body {
+      background-color:#f3f4fa;
+      margin: 20px;
+    }
     .container {
-        display: flex;
+      display: flex;
     }
 
     .box {
-        width: 270px;
-        height: 200px;
-        margin-right: 10px;
-        background-color: #f1eded;
+        flex: 1;
+        height: 300px;
+        margin-left: 10px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    }
+    .container .box:first-child {
+      margin-left: 0px;
     }
 </style>
 <body>
@@ -57,6 +66,14 @@
     <div class="box" id="gcFGC" ></div>
     <div class="box" id="gcFGCT" ></div>
     <div class="box" id="gcGCT" ></div>
+</div><br/>
+<div class="container">
+    <div class="box" id="gcutilS0" ></div>
+    <div class="box" id="gcutilS1" ></div>
+    <div class="box" id="gcutilE" ></div>
+    <div class="box" id="gcutilO" ></div>
+    <div class="box" id="gcutilM" ></div>
+    <div class="box" id="gcutilCCS" ></div>
 </div>
 <!-- ECharts单文件引入 -->
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
@@ -64,6 +81,7 @@
 <script src="../js/heaps.js"></script>
 <script src="../js/memory.js"></script>
 <script src="../js/gc.js"></script>
+<script src="../js/gcutil.js"></script>
 <script type="text/javascript">
 
     document.addEventListener('DOMContentLoaded', function () {

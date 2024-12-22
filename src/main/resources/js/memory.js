@@ -12,7 +12,10 @@ CodeCache.setOption({
             //宽度
             width: 100,
             //6.设置主标题文本样式
-            fontSize: 12,
+          height: 40,
+          lineHeight: 40,
+          //6.设置主标题文本样式
+          fontSize: 14,
         },
     },
     series: [
@@ -23,6 +26,7 @@ CodeCache.setOption({
             min: 0,
             max: 240,
             splitNumber: 2,
+        center: ['50%', '70%'],
             itemStyle: {
                 color: '#58D9F9',
                 shadowColor: 'rgba(0,138,255,0.45)',
@@ -111,7 +115,10 @@ Metaspace.setOption({
             //宽度
             width: 100,
             //6.设置主标题文本样式
-            fontSize: 8,
+          height: 40,
+          lineHeight: 40,
+          //6.设置主标题文本样式
+          fontSize: 13,
         },
     },
     series: [
@@ -122,6 +129,7 @@ Metaspace.setOption({
             min: 0,
             max: 240,
             splitNumber: 2,
+        center: ['50%', '70%'],
             itemStyle: {
                 color: '#58D9F9',
                 shadowColor: 'rgba(0,138,255,0.45)',
@@ -210,7 +218,10 @@ CompressedClassSpace.setOption({
             //宽度
             width: 100,
             //6.设置主标题文本样式
-            fontSize: 10,
+          height: 40,
+          lineHeight: 40,
+          //6.设置主标题文本样式
+          fontSize: 13,
         },
     },
     series: [
@@ -221,6 +232,7 @@ CompressedClassSpace.setOption({
             min: 0,
             max: 240,
             splitNumber: 2,
+        center: ['50%', '70%'],
             itemStyle: {
                 color: '#58D9F9',
                 shadowColor: 'rgba(0,138,255,0.45)',
@@ -309,7 +321,10 @@ PSEdenSpace.setOption({
             //宽度
             width: 100,
             //6.设置主标题文本样式
-            fontSize: 10,
+          height: 40,
+          lineHeight: 40,
+          //6.设置主标题文本样式
+          fontSize: 13,
         },
     },
     series: [
@@ -320,6 +335,7 @@ PSEdenSpace.setOption({
             min: 0,
             max: 240,
             splitNumber: 2,
+        center: ['50%', '70%'],
             itemStyle: {
                 color: '#58D9F9',
                 shadowColor: 'rgba(0,138,255,0.45)',
@@ -408,7 +424,10 @@ PSSurvivorSpace.setOption({
             //宽度
             width: 100,
             //6.设置主标题文本样式
-            fontSize: 10,
+          height: 40,
+          lineHeight: 40,
+          //6.设置主标题文本样式
+          fontSize: 13,
         },
     },
     series: [
@@ -419,6 +438,7 @@ PSSurvivorSpace.setOption({
             min: 0,
             max: 240,
             splitNumber: 2,
+        center: ['50%', '70%'],
             itemStyle: {
                 color: '#58D9F9',
                 shadowColor: 'rgba(0,138,255,0.45)',
@@ -507,7 +527,10 @@ PSOldGen.setOption({
             //宽度
             width: 100,
             //6.设置主标题文本样式
-            fontSize: 10,
+          height: 40,
+          lineHeight: 40,
+          //6.设置主标题文本样式
+          fontSize: 13,
         },
     },
     series: [
@@ -518,6 +541,7 @@ PSOldGen.setOption({
             min: 0,
             max: 240,
             splitNumber: 2,
+        center: ['50%', '70%'],
             itemStyle: {
                 color: '#58D9F9',
                 shadowColor: 'rgba(0,138,255,0.45)',

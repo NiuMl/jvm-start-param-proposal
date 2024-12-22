@@ -138,8 +138,9 @@ public class JvmController {
 
     //gc相关
     private Map<String, Number> gcInfo(String cmd) throws IOException {
-        Process process = Runtime.getRuntime().exec(new String[]{
-                "/bin/sh", "-c", cmd});
+        Process process = Runtime.getRuntime().exec(cmd);
+//        Process process = Runtime.getRuntime().exec(new String[]{
+//                "/bin/sh", "-c", cmd});
         InputStreamReader ir = new InputStreamReader(process.getInputStream());
         LineNumberReader input = new LineNumberReader(ir);
         String line;

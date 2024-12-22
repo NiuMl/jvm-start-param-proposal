@@ -9,326 +9,69 @@ const jvmThreadTimeWaitingCount = echarts.init(document.getElementById('jvmThrea
 const jvmThreadTerminatedCount = echarts.init(document.getElementById('jvmThreadTerminatedCount'));
 const jvmThreadDeadlockCount = echarts.init(document.getElementById('jvmThreadDeadlockCount'));
 // 显示标题，图例和空的坐标轴
-threadCount.setOption({
+function optionD(name, color) {
+  return {
     title: {
-        text: '线程总数',
-        left: "center",
-        textStyle: {
-            //宽度
-            width: 100,
-            //6.设置主标题文本样式
-            fontSize: 12,
-        },
+      text: name,
+      left: "center",
+      textStyle: {
+        //宽度
+        width: 100,
+        height: 40,
+        lineHeight: 40,
+        //6.设置主标题文本样式
+        fontSize: 14,
+      },
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
     },
     tooltip: {
-        trigger: 'item',
-        axisPointer: {
-            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-        }
+      trigger: 'axis',
+      axisPointer: {
+        // 坐标轴指示器，坐标轴触发有效
+        type: 'line' // 默认为直线，可选为：'line' | 'shadow'
+      }
 
     },
     xAxis: {
-        type: 'category',
-        data: []
+      type: 'category',
+      data: []
     },
     yAxis: {},
     series: [
-        {
-            // name: '线程总数',
-            type: 'line',
-            data: []
+      {
+        // name: '线程总数',
+        type: 'line',
+        data: [],
+        itemStyle: {
+          color: color
         }
+      }
     ]
-});
-threadDaemonCount.setOption({
-    title: {
-        text: '守护线程数',
-        left: "center",
-        textStyle: {
-            //宽度
-            width: 100,
-            //6.设置主标题文本样式
-            fontSize: 12,
-        },
-    },
-    tooltip: {
-        trigger: 'item',
-        axisPointer: {
-            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-        }
-
-    },
-    xAxis: {
-        type: 'category',
-        data: []
-    },
-    yAxis: {},
-    series: [
-        {
-            // name: '线程总数',
-            type: 'line',
-            data: []
-        }
-    ]
-});
-jvmThreadTotalStartedCount.setOption({
-    title: {
-        text: '启动线程总数',
-        left: "center",
-        textStyle: {
-            //宽度
-            width: 100,
-            //6.设置主标题文本样式
-            fontSize: 12,
-        },
-    },
-    tooltip: {
-        trigger: 'item',
-        axisPointer: {
-            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-        }
-
-    },
-    xAxis: {
-        type: 'category',
-        data: []
-    },
-    yAxis: {},
-    series: [
-        {
-            // name: '线程总数',
-            type: 'line',
-            data: []
-        }
-    ]
-});
-jvmThreadNewCount.setOption({
-    title: {
-        text: '新建线程数',
-        left: "center",
-        textStyle: {
-            //宽度
-            width: 100,
-            //6.设置主标题文本样式
-            fontSize: 12,
-        },
-    },
-    tooltip: {
-        trigger: 'item',
-        axisPointer: {
-            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-        }
-
-    },
-    xAxis: {
-        type: 'category',
-        data: []
-    },
-    yAxis: {},
-    series: [
-        {
-            // name: '线程总数',
-            type: 'line',
-            data: []
-        }
-    ]
-});
-jvmThreadRunnableCount.setOption({
-    title: {
-        text: '运行线程数',
-        left: "center",
-        textStyle: {
-            //宽度
-            width: 100,
-            //6.设置主标题文本样式
-            fontSize: 12,
-        },
-    },
-    tooltip: {
-        trigger: 'item',
-        axisPointer: {
-            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-        }
-
-    },
-    xAxis: {
-        type: 'category',
-        data: []
-    },
-    yAxis: {},
-    series: [
-        {
-            // name: '线程总数',
-            type: 'line',
-            data: []
-        }
-    ]
-});
-jvmThreadBlockedCount.setOption({
-    title: {
-        text: '阻塞线程数',
-        left: "center",
-        textStyle: {
-            //宽度
-            width: 100,
-            //6.设置主标题文本样式
-            fontSize: 12,
-        },
-    },
-    tooltip: {
-        trigger: 'item',
-        axisPointer: {
-            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-        }
-
-    },
-    xAxis: {
-        type: 'category',
-        data: []
-    },
-    yAxis: {},
-    series: [
-        {
-            // name: '线程总数',
-            type: 'line',
-            data: []
-        }
-    ]
-});
-jvmThreadWaitingCount.setOption({
-    title: {
-        text: '等待线程数',
-        left: "center",
-        textStyle: {
-            //宽度
-            width: 100,
-            //6.设置主标题文本样式
-            fontSize: 12,
-        },
-    },
-    tooltip: {
-        trigger: 'item',
-        axisPointer: {
-            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-        }
-
-    },
-    xAxis: {
-        type: 'category',
-        data: []
-    },
-    yAxis: {},
-    series: [
-        {
-            // name: '线程总数',
-            type: 'line',
-            data: []
-        }
-    ]
-});
-jvmThreadTimeWaitingCount.setOption({
-    title: {
-        text: '等待超时线程数',
-        left: "center",
-        textStyle: {
-            //宽度
-            width: 100,
-            //6.设置主标题文本样式
-            fontSize: 12,
-        },
-    },
-    tooltip: {
-        trigger: 'item',
-        axisPointer: {
-            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-        }
-
-    },
-    xAxis: {
-        type: 'category',
-        data: []
-    },
-    yAxis: {},
-    series: [
-        {
-            // name: '线程总数',
-            type: 'line',
-            data: []
-        }
-    ]
-});
-jvmThreadTerminatedCount.setOption({
-    title: {
-        text: '终止线程数',
-        left: "center",
-        textStyle: {
-            //宽度
-            width: 100,
-            //6.设置主标题文本样式
-            fontSize: 12,
-        },
-    },
-    tooltip: {
-        trigger: 'item',
-        axisPointer: {
-            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-        }
-
-    },
-    xAxis: {
-        type: 'category',
-        data: []
-    },
-    yAxis: {},
-    series: [
-        {
-            // name: '线程总数',
-            type: 'line',
-            data: []
-        }
-    ]
-});
-jvmThreadDeadlockCount.setOption({
-    title: {
-        text: '死锁线程数',
-        left: "center",
-        textStyle: {
-            //宽度
-            width: 100,
-            //6.设置主标题文本样式
-            fontSize: 12,
-        },
-    },
-    tooltip: {
-        trigger: 'item',
-        axisPointer: {
-            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-        }
-
-    },
-    xAxis: {
-        type: 'category',
-        data: []
-    },
-    yAxis: {},
-    series: [
-        {
-            // name: '线程总数',
-            type: 'line',
-            data: []
-        }
-    ]
-});
+  }
+}
+threadCount.setOption(optionD('线程总数', '#409EFF'));
+threadDaemonCount.setOption(optionD('守护线程数', '#1B45CE'));
+//启动线程总数
+jvmThreadTotalStartedCount.setOption(optionD('启动线程总数', '#87DBDF'));
+// 新建线程数
+jvmThreadNewCount.setOption(optionD('新建线程数', '#C0E995'));
+// 运行线程数
+jvmThreadRunnableCount.setOption(optionD('运行线程数', '#59C75B'));
+// 阻塞线程数
+jvmThreadBlockedCount.setOption(optionD('阻塞线程数', '#EB7536'));
+// 等待线程数
+jvmThreadWaitingCount.setOption(optionD('等待线程数', '#E9E322'));
+// 等待超时线程数
+jvmThreadTimeWaitingCount.setOption(optionD('等待超时线程数', '#F0B30B'));
+// 终止线程数
+jvmThreadTerminatedCount.setOption(optionD('终止线程数', '#F00B2A'));
+// 死锁线程数
+jvmThreadDeadlockCount.setOption(optionD('死锁线程数', '#CE0BF0'));
 
 // threadDaemonCount.setOption({
 //     series: [
