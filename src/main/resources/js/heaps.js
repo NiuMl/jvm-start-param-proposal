@@ -22,7 +22,7 @@ nonHeap.setOption({
             endAngle: 0,
             min: 0,
             max: 240,
-            splitNumber: 2,
+            splitNumber: 4,
         center: ['50%', '70%'],
             itemStyle: {
                 color: '#58D9F9',
@@ -118,7 +118,6 @@ heap.setOption({
           fontSize: 14,
         },
     },
- 
     series: [
         {
             type: 'gauge',
@@ -126,7 +125,7 @@ heap.setOption({
             endAngle: 0,
             min: 0,
             max: 240,
-            splitNumber: 2,
+            splitNumber: 4,
         center: ['50%', '70%'],
             itemStyle: {
                 color: '#58D9F9',
@@ -153,7 +152,7 @@ heap.setOption({
                 offsetCenter: [0, '5%']
             },
             axisTick: {//两个大刻度里面的小刻度
-                splitNumber: 2,
+                splitNumber: 8,
                 lineStyle: {
                     width: 2,
                     color: '#999'
@@ -214,7 +213,7 @@ function heapSetValue(data) {
     let maxValue = data.nonHeapMemoryMax == -1 ? 2*data.nonHeapMemoryUsed: data.nonHeapMemoryMax;
     nonHeap.setOption({
         series: [{
-            min: Math.round(data.nonHeapMemoryInit/1024/1024),
+            min: 0,
             max: Math.round(maxValue/1024/1024),
             data: [
                 {
@@ -225,7 +224,7 @@ function heapSetValue(data) {
     });
     heap.setOption({
         series: [{
-            min: Math.round(data.heapMemoryInit/1024/1024),
+            min: 0,
             max: Math.round(data.heapMemoryMax/1024/1024),
             data: [
                 {

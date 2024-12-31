@@ -59,7 +59,7 @@ public class JvmController {
     @GetMapping("/flux")
     public Flux<String> getProcessInfo() {
 
-        return Flux.interval(Duration.ofSeconds(1))
+        return Flux.interval(Duration.ofSeconds(2))
                 .map(sequence -> {
                     try {
                         Map<String, Object> map = new HashMap<String, Object>() {{

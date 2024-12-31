@@ -4,37 +4,26 @@
     <title>ECharts</title>
 </head>
 <style>
-    body {
-      background-color:#f3f4fa;
-      margin: 20px;
-    }
     .container {
-      display: flex;
+        display: flex;
     }
 
     .box {
-        flex: 1;
+        width: 270px;
         height: 200px;
-        margin-left: 10px;
-        background-color: #fff;
-        border-radius: 5px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-    }
-    .container .box:first-child {
-      margin-left: 0px;
+        margin-right: 10px;
+        background-color: #f1eded;
     }
 </style>
 <body>
 <div class="container">
     <div class="box" id="threadCount" ></div>
-    <div class="box" id="gcYGC" ></div>
-    <div class="box" id="gcFGC" ></div>
-</div><br/>
-<div class="container">
     <div class="box" id="threadDaemonCount" ></div>
     <div class="box" id="jvmThreadTotalStartedCount" ></div>
     <div class="box" id="jvmThreadNewCount" ></div>
     <div class="box" id="jvmThreadRunnableCount" ></div>
+</div><br/>
+<div class="container">
     <div class="box" id="jvmThreadBlockedCount" ></div>
     <div class="box" id="jvmThreadWaitingCount" ></div>
     <div class="box" id="jvmThreadTimeWaitingCount" ></div>
@@ -42,26 +31,17 @@
     <div class="box" id="jvmThreadDeadlockCount" ></div>
 </div><br/>
 <div class="container">
-    <div class="box" id="gcYGCT" ></div>
-    <div class="box" id="gcFGCT" ></div>
-    <div class="box" id="gcGCT" ></div>
+    <div class="box" id="nonHeap" ></div>
+    <div class="box" id="heap" ></div>
 </div><br/>
 <div class="container">
-    <div class="box" id="nonHeap" style="height: 300px"></div>
-    <div class="box" id="heap" style="height: 300px"></div>
-</div><br/>
-<div class="container">
-    <div class="box" id="quan" style="height: 300px" ></div>
-    <div class="box" id="zhexiantu" style="height: 300px"></div>
-</div><br/>
-<!--<div class="container">-->
-<!--    <div class="box" id="CodeCache" ></div>-->
-<!--    <div class="box" id="Metaspace" ></div>-->
-<!--    <div class="box" id="CompressedClassSpace" ></div>-->
-<!--    <div class="box" id="PSEdenSpace" ></div>-->
-<!--    <div class="box" id="PSSurvivorSpace" ></div>-->
-<!--    <div class="box" id="PSOldGen" ></div>-->
-<!--</div>-->
+    <div class="box" id="CodeCache" ></div>
+    <div class="box" id="Metaspace" ></div>
+    <div class="box" id="CompressedClassSpace" ></div>
+    <div class="box" id="PSEdenSpace" ></div>
+    <div class="box" id="PSSurvivorSpace" ></div>
+    <div class="box" id="PSOldGen" ></div>
+</div>
 <br/>
 <div class="container">
     <div class="box" id="gcS0" ></div>
@@ -71,7 +51,13 @@
     <div class="box" id="gcMethod" ></div>
     <div class="box" id="gcCcsc" ></div>
 </div><br/>
-
+<div class="container">
+    <div class="box" id="gcYGC" ></div>
+    <div class="box" id="gcYGCT" ></div>
+    <div class="box" id="gcFGC" ></div>
+    <div class="box" id="gcFGCT" ></div>
+    <div class="box" id="gcGCT" ></div>
+</div><br/>
 <div class="container">
     <div class="box" id="gcutilS0" ></div>
     <div class="box" id="gcutilS1" ></div>
@@ -87,7 +73,6 @@
 <script src="../js/memory.js"></script>
 <script src="../js/gc.js"></script>
 <script src="../js/gcutil.js"></script>
-<script src="../js/quan.js"></script>
 <script type="text/javascript">
 
     document.addEventListener('DOMContentLoaded', function () {
@@ -113,15 +98,10 @@
             //堆相关
             heapSetValue(obj.heap);
             //栈相关
-            // memorySetValue(obj.memory)
+            memorySetValue(obj.memory)
             //GC相关
-            gcSetValue(obj.gc);
-
-            setQuan(obj.gc);
-            setZheXianTu(obj.gcutil);
-            //饼图
-            //GC利用率相关
-            gcutilSetValue(obj.gcutil);
+            gcSetValue(obj.gc)
+            gcutilSetValue(obj.gcutil)
         };
 
         // 当发生错误时触发

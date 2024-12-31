@@ -29,6 +29,7 @@ function optionD(name, color) {
       bottom: '3%',
       containLabel: true
     },
+      // backgroundColor: '#d75252',
     tooltip: {
       trigger: 'axis',
       axisPointer: {
@@ -54,7 +55,7 @@ function optionD(name, color) {
     ]
   }
 }
-threadCount.setOption(optionD('线程总数', '#409EFF'));
+threadCount.setOption(optionD('线程总数', '#8c2358'));
 threadDaemonCount.setOption(optionD('守护线程数', '#1B45CE'));
 //启动线程总数
 jvmThreadTotalStartedCount.setOption(optionD('启动线程总数', '#87DBDF'));
